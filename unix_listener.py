@@ -1,4 +1,6 @@
+#!/usr/bin/python
 import glib
+import sys
 
 from pyudev import Context, Monitor
 
@@ -22,4 +24,7 @@ observer = MonitorObserver(monitor)
 observer.connect('device-event', device_event)
 monitor.start()
 
+
+
 glib.MainLoop().run()
+
