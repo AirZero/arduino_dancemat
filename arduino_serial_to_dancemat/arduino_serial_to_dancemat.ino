@@ -1,10 +1,15 @@
+
+#include <SoftwareSerial.h>
+
+SoftwareSerial swSer(14, 12, 128);
+
 void setup() {
   
   
 Serial.begin(9600);
 
-  portOne.begin(9600);
-  portTwo.begin(9600);
+  //portOne.begin(9600);
+ // swSer.begin(9600);
   pinMode(4,OUTPUT);
   pinMode(5,OUTPUT);
   pinMode(6,OUTPUT);
@@ -19,11 +24,23 @@ Serial.begin(9600);
 
 
 void loop() {
-  portOne.listen();
-  char c = mySerial.read();
-  Serial.println(c); 
+  //swSer.listen();
+  //Serial.write(portOne.read());
+//  char c = mySerial.read();
+//  Serial.println(c); 
+  if(Serial.read() == "down" ){
+  analogWrite(A2, 800);
+  Serial.println("up"); 
+  }
+
+  if(Serial.read() == "up" ){
+  analogWrite(A2, 800);
+  Serial.println("up"); 
+  }
   
+  //analogWrite(analog2);
   
+ /* 
 //debugging prints
   if (portOne.isListening()) {
    Serial.println("Port One is listening!"); 
@@ -36,5 +53,5 @@ void loop() {
 }else{
    Serial.println("Port Two is not listening!"); 
 }
-
+*/
 }
