@@ -62,11 +62,12 @@ while done==False:
         
         # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
         if event.type == pygame.JOYBUTTONDOWN:
-             print("Joystick button pressed. Down")
-            # ser.write("down".encode())
+            
+             print("Joystick button pressed.")
+             ser.write(serialcmd.encode('down'))
         if event.type == pygame.JOYBUTTONUP:
-             print("Joystick button released. Up")
-            # ser.write("up".encode())
+             print("Joystick button released.")
+             ser.write(serialcmd.encode('up'))
  
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
@@ -101,9 +102,8 @@ while done==False:
         for i in range( axes ):
             axis = joystick.get_axis( i )
             textPrint.print(screen, "Axis {} value: {:>6.3f}".format(i, axis) )
-            #if(axis == 1):
-            #      ser.write(i.encode())
-            #      print(i)            
+        textPrint.unindent()
+            
         buttons = joystick.get_numbuttons()
         textPrint.print(screen, "Number of buttons: {}".format(buttons) )
         textPrint.indent()
@@ -111,11 +111,6 @@ while done==False:
         for i in range( buttons ):
             button = joystick.get_button( i )
             textPrint.print(screen, "Button {:>2} value: {}".format(i,button) )
-            if(button == 1):
-                print(i)
-                ser.write(i)
-
-		
         textPrint.unindent()
             
         # Hat switch. All or nothing for direction, not like joysticks.
