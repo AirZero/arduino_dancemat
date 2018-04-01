@@ -78,14 +78,16 @@ void draw() {
   delay(0);
   if(beat.isKick()) {
       arduino.digitalWrite(ledPin, Arduino.HIGH);   // set the LED on
+      arduino.digitalWrite(ledPin2, Arduino.HIGH);   // set the LED on
+      arduino.digitalWrite(ledPin3, Arduino.HIGH);   // set the LED on
       kickSize = 32;
   }
   if(beat.isSnare()) {
-      arduino.digitalWrite(ledPin2, Arduino.HIGH);   // set the LED on
+      
       snareSize = 32;
   }
   if(beat.isHat()) {
-      arduino.digitalWrite(ledPin3, Arduino.HIGH);   // set the LED on
+      
       hatSize = 32;
   }
   
@@ -103,8 +105,8 @@ void draw() {
   
  // if(slow > 5){
    
-   if(beat.isHat()&&beat.isSnare()&&beat.isKick()) {
-   delay(300);
+   if(beat.isHat()&&beat.isKick()&&beat.isSnare()) { //
+   //delay(300);
    arduino.digitalWrite(ledPin, Arduino.LOW);    // set the LED off 
    arduino.digitalWrite(ledPin2, Arduino.LOW);    // set the LED off
    arduino.digitalWrite(ledPin3, Arduino.LOW);    // set the LED off
