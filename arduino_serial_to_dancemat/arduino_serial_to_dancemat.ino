@@ -26,17 +26,17 @@ Serial.begin(9600);
 void loop() {
   //swSer.listen();
   //Serial.write(portOne.read());
-//  char c = mySerial.read();
+  char c = swSer.read();
 //  Serial.println(c); 
-  if(Serial.read() == "down" ){
-  analogWrite(A2, 800);
-  Serial.println("up"); 
-  }
+ // if(Serial.read() == "down" ){
+  //analogWrite(A2, c);
+  Serial.print(c); 
+ // }
 
-  if(Serial.read() == "up" ){
-  analogWrite(A2, 800);
-  Serial.println("up"); 
-  }
+ // if(Serial.read() == "up" ){
+//  analogWrite(A2, c);
+//  Serial.println("up"); 
+ // }
   
   //analogWrite(analog2);
   
